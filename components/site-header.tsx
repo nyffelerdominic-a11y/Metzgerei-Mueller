@@ -56,11 +56,11 @@ export function SiteHeader() {
             priority
           />
           <span className="hidden sm:flex flex-col leading-tight">
-            <span className="font-serif text-[17px] tracking-tight text-ink">
+            <span className="font-display text-lg font-bold tracking-tight text-ink uppercase">
               Müller Metzgerei
             </span>
-            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-ink-mute">
-              zum Rössli · seit 1984
+            <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-brand-red">
+              ★ zum Rössli · seit 1984
             </span>
           </span>
         </Link>

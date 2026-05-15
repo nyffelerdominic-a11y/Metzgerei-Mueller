@@ -23,11 +23,11 @@ export function SiteFooter() {
                 />
               </div>
               <div>
-                <p className="font-serif text-2xl tracking-tight">
+                <p className="font-display text-2xl font-bold tracking-tight uppercase">
                   Müller Metzgerei
                 </p>
-                <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-cream-light/60">
-                  zum Rössli · seit 1984
+                <p className="font-mono text-[11px] uppercase tracking-[0.25em] text-gold">
+                  ★ zum Rössli · seit 1984
                 </p>
               </div>
             </div>

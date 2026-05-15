@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Fraunces } from "next/font/google";
+import {
+  Geist,
+  Fraunces,
+  Bricolage_Grotesque,
+  JetBrains_Mono,
+} from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import { SiteHeader } from "@/components/site-header";
@@ -12,8 +17,8 @@ const geist = Geist({
   display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const jetbrains = JetBrains_Mono({
+  variable: "--font-jetbrains",
   subsets: ["latin"],
   display: "swap",
 });
@@ -23,6 +28,13 @@ const fraunces = Fraunces({
   subsets: ["latin"],
   display: "swap",
   axes: ["SOFT", "opsz"],
+});
+
+const bricolage = Bricolage_Grotesque({
+  variable: "--font-bricolage",
+  subsets: ["latin"],
+  display: "swap",
+  axes: ["opsz", "wdth"],
 });
 
 export const metadata: Metadata = {
@@ -104,7 +116,7 @@ export default function RootLayout({
   return (
     <html
       lang="de-CH"
-      className={`${geist.variable} ${geistMono.variable} ${fraunces.variable} h-full antialiased`}
+      className={`${geist.variable} ${jetbrains.variable} ${fraunces.variable} ${bricolage.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">
         <Script
