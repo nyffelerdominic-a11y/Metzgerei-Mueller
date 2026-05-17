@@ -1,13 +1,15 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, ArrowUpRight, Sparkles } from "lucide-react";
+import Script from "next/script";
+import { ArrowRight } from "lucide-react";
 import { Hero } from "@/components/hero";
 import { Container, Section, SectionLabel } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
 import { ButtonLink } from "@/components/ui/button";
-import { SortimentGrid } from "@/components/sortiment-grid";
+import { SortimentList } from "@/components/sortiment-list";
 import { GoogleMap } from "@/components/google-map";
 import { OpeningStatusBadge } from "@/components/opening-status";
+import { TestimonialsSection } from "@/components/testimonials-section";
 import { site } from "@/lib/site";
 import { partyserviceValues } from "@/lib/menu-data";
 import {
@@ -22,28 +24,28 @@ export default function HomePage() {
       <Hero />
 
       {/* TRADITION */}
-      <Section id="tradition" className="bg-cream-light">
+      <Section id="tradition" className="bg-paper">
         <Container>
           <div className="grid gap-16 lg:grid-cols-12">
             <Reveal className="lg:col-span-5">
               <SectionLabel>01 — Tradition</SectionLabel>
               <h2 className="mt-6 font-serif text-4xl sm:text-5xl lg:text-6xl leading-[1.05] tracking-tight text-balance">
-                Vier Jahrzehnte{" "}
-                <em className="italic font-light text-brand-red">
-                  Leidenschaft
-                </em>{" "}
-                aus Brüttisellen.
+                Vier Jahrzehnte an der{" "}
+                <em className="italic-display text-brand-red">
+                  Zürichstrasse.
+                </em>
               </h2>
             </Reveal>
             <Reveal delay={1} className="lg:col-span-6 lg:col-start-7 space-y-6 text-[17px] leading-[1.7] text-ink-soft text-pretty">
               <p>
-                Seit über 40 Jahren steht die <strong className="text-ink font-medium">Müller Metzgerei AG zum Rössli</strong> für ehrliches Handwerk und höchste Qualität.
-                Als Kleinbetrieb sind wir flexibel und können schnell auf Ihre Wünsche eingehen.
+                Die <strong className="text-ink font-medium">Müller Metzgerei AG zum Rössli</strong> ist
+                seit 1984 in Brüttisellen. Kleiner Betrieb, kurze Wege,
+                feste Lieferanten.
               </p>
               <p>
-                Unser Fleisch stammt grösstenteils von Landwirtschaftsbetrieben aus der Region. Sämtliche
-                Wurstwaren und Spezialitäten werden in unserer hauseigenen Wursterei frisch hergestellt
-                — mit traditionellen Rezepten und ohne Kompromisse.
+                Das Fleisch kommt grösstenteils von Höfen aus der Region. Wurst,
+                Aufschnitt und Spezialitäten machen wir in der eigenen Wursterei
+                nebenan, nach Rezepten, die teilweise seit den Achtzigern gleich geblieben sind.
               </p>
               <div className="grid grid-cols-3 gap-4 pt-8 border-t border-line/70 mt-10">
                 <Stat number="40+" label="Jahre Handwerk" />
@@ -55,57 +57,60 @@ export default function HomePage() {
         </Container>
       </Section>
 
-      {/* SORTIMENT */}
-      <Section id="sortiment" className="bg-cream py-24 sm:py-32">
-        <Container size="wide">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
-            <div>
-              <SectionLabel>02 — Sortiment</SectionLabel>
+      {/* SORTIMENT — Theken-Tafel im Druckmenü-Stil */}
+      <Section id="sortiment" className="bg-paper-deep py-24 sm:py-32 border-y border-line-soft">
+        <Container size="default">
+          <div className="grid gap-12 lg:grid-cols-12 mb-14">
+            <div className="lg:col-span-7">
+              <SectionLabel>02 — Aus der Theke</SectionLabel>
               <h2 className="mt-6 font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.05] text-balance">
-                Was unsere Theke{" "}
-                <em className="italic font-light text-brand-red">erzählt.</em>
+                Was bei uns in der{" "}
+                <em className="italic-display text-brand-red">Auslage liegt.</em>
               </h2>
             </div>
-            <Link
-              href="/sortiment"
-              className="group inline-flex items-center gap-2 text-sm font-medium text-ink hover:text-brand-red transition-colors"
-            >
-              Komplettes Sortiment
-              <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </Link>
+            <div className="lg:col-span-4 lg:col-start-9 lg:pt-8">
+              <p className="text-base text-ink-soft leading-relaxed text-pretty">
+                Sechs Kategorien, das ganze Jahr. Saisonales kommt dazu —
+                Wild im Herbst, Bärlauch im Frühling, Chinoise zu Festen.
+              </p>
+              <p className="mt-4 font-mono text-[11px] uppercase tracking-[0.2em] text-ink-mute">
+                Etwas Bestimmtes? <a href={`tel:${site.phoneTel}`} className="text-brand-red hover:underline">{site.phone}</a>
+              </p>
+            </div>
           </div>
-          <SortimentGrid />
+          <SortimentList />
         </Container>
       </Section>
 
       {/* PARTYSERVICE TEASER */}
-      <Section id="partyservice" className="bg-ink text-cream-light relative overflow-hidden">
+      <Section id="partyservice" className="bg-brand-red-deep text-paper relative overflow-hidden">
         <div className="absolute inset-0 bg-noise opacity-[0.05] pointer-events-none" />
         <div
-          className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full opacity-20 blur-3xl pointer-events-none"
-          style={{ background: "radial-gradient(circle, #c8202b 0%, transparent 70%)" }}
+          className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full opacity-25 blur-3xl pointer-events-none"
+          style={{ background: "radial-gradient(circle, oklch(0.55 0.18 30) 0%, transparent 70%)" }}
         />
         <Container>
           <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
             <Reveal className="lg:col-span-7">
               <SectionLabel>
-                <span className="text-gold">03 — Partyservice</span>
+                <span className="text-brass">03 — Partyservice</span>
               </SectionLabel>
               <h2 className="mt-6 font-serif text-4xl sm:text-5xl lg:text-7xl tracking-tight leading-[0.98] text-balance">
                 Genuss, der{" "}
-                <em className="italic font-light text-gold">verbindet.</em>
+                <em className="italic-display text-brass">verbindet.</em>
               </h2>
-              <p className="mt-8 max-w-xl text-lg text-cream-light/75 leading-relaxed text-pretty">
-                Ob Geburtstag, Firmenfeier oder Familienfest — wir bringen Ihre Tafel zum Strahlen.
-                Über 25 Gerichte aus eigener Produktion, individuell zusammengestellt, frisch geliefert.
+              <p className="mt-8 max-w-xl text-lg text-paper/75 leading-relaxed text-pretty">
+                Geburtstag, Firmenanlass, Hochzeit, einfach eine grössere Familienrunde:
+                über 25 Gerichte aus eigener Produktion, nach Bedarf zusammengestellt
+                und am Festtag frisch geliefert.
               </p>
               <ul className="mt-10 grid gap-x-8 gap-y-4 sm:grid-cols-2 max-w-xl">
                 {partyserviceValues.map((v) => (
-                  <li key={v.title} className="flex gap-3">
-                    <Sparkles className="size-4 mt-1 shrink-0 text-gold" />
+                  <li key={v.title} className="flex gap-4">
+                    <span aria-hidden className="mt-2.5 h-px w-6 shrink-0 bg-brass" />
                     <div>
-                      <p className="font-medium text-cream-light">{v.title}</p>
-                      <p className="text-sm text-cream-light/65 leading-relaxed mt-1">
+                      <p className="font-medium text-paper">{v.title}</p>
+                      <p className="text-sm text-paper/65 leading-relaxed mt-1">
                         {v.body}
                       </p>
                     </div>
@@ -113,7 +118,7 @@ export default function HomePage() {
                 ))}
               </ul>
               <div className="mt-12 flex flex-wrap gap-4">
-                <ButtonLink href="/partyservice" variant="primary" size="lg">
+                <ButtonLink href="/partyservice" variant="on-dark" size="lg">
                   Menü & Anfrage
                   <ArrowRight className="size-4" />
                 </ButtonLink>
@@ -122,7 +127,7 @@ export default function HomePage() {
                   external
                   variant="ghost"
                   size="lg"
-                  className="!text-cream-light hover:!bg-cream-light/10"
+                  className="!text-paper hover:!bg-paper/10"
                 >
                   {site.phone} anrufen
                 </ButtonLink>
@@ -131,28 +136,31 @@ export default function HomePage() {
             <Reveal delay={1} className="lg:col-span-5">
               <div className="relative aspect-[4/5] overflow-hidden rounded-2xl">
                 <Image
-                  src="https://images.unsplash.com/photo-1544025162-d76694265947?w=1200&q=80&auto=format&fit=crop"
-                  alt="Hausgemachte Fleischspezialitäten für den Partyservice"
+                  src="/photos/hero-fleisch.jpg"
+                  alt="Fleischspezialität auf Holzbrett für den Partyservice"
                   fill
                   sizes="(min-width: 1024px) 40vw, 100vw"
                   className="object-cover"
                 />
-                <div className="absolute inset-0 ring-1 ring-inset ring-cream-light/10 rounded-2xl" />
+                <div className="absolute inset-0 ring-1 ring-inset ring-paper/10 rounded-2xl" />
               </div>
             </Reveal>
           </div>
         </Container>
       </Section>
 
+      {/* TESTIMONIALS */}
+      <TestimonialsSection />
+
       {/* ÖFFNUNG + STANDORT */}
-      <Section id="besuch" className="bg-cream-light">
+      <Section id="besuch" className="bg-paper">
         <Container>
           <div className="grid gap-12 lg:grid-cols-12">
             <Reveal className="lg:col-span-5">
               <SectionLabel>04 — Besuch</SectionLabel>
               <h2 className="mt-6 font-serif text-4xl sm:text-5xl tracking-tight leading-[1.05]">
-                Im Herzen von{" "}
-                <em className="italic font-light text-brand-red">Brüttisellen.</em>
+                In{" "}
+                <em className="italic-display text-brand-red">Brüttisellen.</em>
               </h2>
               <div className="mt-8">
                 <OpeningStatusBadge />
@@ -192,6 +200,50 @@ export default function HomePage() {
           </div>
         </Container>
       </Section>
+
+      <Script
+        id="reviews-schema"
+        type="application/ld+json"
+        strategy="afterInteractive"
+      >
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: site.fullName,
+          url: site.url,
+          aggregateRating: {
+            "@type": "AggregateRating",
+            ratingValue: "4.9",
+            reviewCount: "3",
+          },
+          review: [
+            {
+              "@type": "Review",
+              author: { "@type": "Person", name: "Jacqueline Kern" },
+              datePublished: "2025-04-20",
+              reviewRating: { "@type": "Rating", ratingValue: "5" },
+              reviewBody:
+                "Ich komme extra von Dürnten in diese Metzgerei. Der Weg ist es mir wert, da die Bedienung immer freundlich ist und das allerbeste Fleisch gegeben wird. Einfach Qualität wie von «früher» gewohnt.",
+            },
+            {
+              "@type": "Review",
+              author: { "@type": "Person", name: "Sita Looser" },
+              datePublished: "2025-03-12",
+              reviewRating: { "@type": "Rating", ratingValue: "5" },
+              reviewBody:
+                "Mit der Bestellung vom wunderbaren Rindsfilet im Teig & den Beilagen (feine Spätzli & saftiges Rotkraut) konnte ich einen entspannten Abend mit meinen Gästen geniessen. Das Essen war unglaublich lecker.",
+            },
+            {
+              "@type": "Review",
+              author: { "@type": "Person", name: "Markus Stapfer" },
+              datePublished: "2022-08-08",
+              reviewRating: { "@type": "Rating", ratingValue: "5" },
+              reviewBody:
+                "Äusserst freundlich und immer top Qualität. Der Metzger meines Vertrauens. Das Bison-Entrecote war ein Traum.",
+            },
+          ],
+        })}
+      </Script>
     </>
   );
 }

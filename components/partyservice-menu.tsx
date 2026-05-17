@@ -24,7 +24,7 @@ export function PartyserviceMenu() {
                 <h3 className="mt-4 font-serif text-3xl sm:text-4xl lg:text-5xl tracking-tight leading-[1.05] text-balance">
                   {section.title}
                 </h3>
-                <p className="mt-3 italic font-serif text-ink-soft text-[15px] text-pretty">
+                <p className="mt-3 italic font-serif text-ink-soft text-base text-pretty">
                   {section.subtitle}
                 </p>
                 {section.note && (

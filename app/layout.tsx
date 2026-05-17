@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import {
   Geist,
-  Fraunces,
-  Bricolage_Grotesque,
+  Newsreader,
   JetBrains_Mono,
 } from "next/font/google";
 import Script from "next/script";
@@ -23,25 +22,19 @@ const jetbrains = JetBrains_Mono({
   display: "swap",
 });
 
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
+const newsreader = Newsreader({
+  variable: "--font-newsreader",
   subsets: ["latin"],
   display: "swap",
-  axes: ["SOFT", "opsz"],
-});
-
-const bricolage = Bricolage_Grotesque({
-  variable: "--font-bricolage",
-  subsets: ["latin"],
-  display: "swap",
-  axes: ["opsz", "wdth"],
+  axes: ["opsz"],
+  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.fullName} — Metzgerei in Brüttisellen`,
-    template: `%s — ${site.name}`,
+    default: `${site.fullName} — Metzgerei in Brüttisellen | Wurstwaren & Partyservice`,
+    template: `%s — ${site.name} | Handwerk seit 1984`,
   },
   description: site.description,
   keywords: [
@@ -50,8 +43,11 @@ export const metadata: Metadata = {
     "Wurstwaren hausgemacht",
     "Müller Metzgerei",
     "Rössli Brüttisellen",
-    "Chinoise",
+    "Charcuterie Schweiz",
     "Festtagsbraten",
+    "Catering Ostschweiz",
+    "Handgemachte Wurst",
+    "Partyservice Ostschweiz",
   ],
   openGraph: {
     type: "website",
@@ -116,7 +112,7 @@ export default function RootLayout({
   return (
     <html
       lang="de-CH"
-      className={`${geist.variable} ${jetbrains.variable} ${fraunces.variable} ${bricolage.variable} h-full antialiased`}
+      className={`${geist.variable} ${jetbrains.variable} ${newsreader.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">
         <Script
@@ -128,7 +124,7 @@ export default function RootLayout({
         </Script>
         <a
           href="#hauptinhalt"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:rounded-full focus:bg-brand-red focus:text-cream-light focus:px-4 focus:py-2 focus:text-sm"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:rounded-full focus:bg-brand-red focus:text-paper focus:px-4 focus:py-2 focus:text-sm"
         >
           Zum Inhalt springen
         </a>

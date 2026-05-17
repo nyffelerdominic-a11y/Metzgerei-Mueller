@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# dev screenshots in repo root (Playwright / Claude session captures)
+/*.png
+.impeccable.md

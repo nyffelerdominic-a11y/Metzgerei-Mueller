@@ -35,10 +35,10 @@ export function SiteHeader() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-40 transition-all duration-300",
+        "sticky top-0 z-40 bg-paper/95 backdrop-blur-md transition-shadow duration-300",
         scrolled
-          ? "bg-cream-light/85 backdrop-blur-md border-b border-line"
-          : "bg-transparent"
+          ? "shadow-[0_1px_0_0_var(--color-line)]"
+          : "shadow-[0_1px_0_0_transparent]"
       )}
     >
       <div className="mx-auto flex h-18 max-w-7xl items-center justify-between px-6 sm:px-8 lg:px-12 py-3">
@@ -52,15 +52,15 @@ export function SiteHeader() {
             alt=""
             width={48}
             height={48}
-            className="size-11 rounded-full transition-transform duration-300 group-hover:scale-105"
+            className="size-11 rounded-full transition-transform duration-200 [transition-timing-function:var(--ease-out)] [@media(hover:hover)]:group-hover:scale-[1.03]"
             priority
           />
           <span className="hidden sm:flex flex-col leading-tight">
-            <span className="font-display text-lg font-bold tracking-tight text-ink uppercase">
-              Müller Metzgerei
+            <span className="font-display text-[1.35rem] font-medium tracking-tight text-ink leading-none">
+              Müller <span className="italic-display text-brand-red">Metzgerei</span>
             </span>
-            <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-brand-red">
-              ★ zum Rössli · seit 1984
+            <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-ink-mute mt-1">
+              zum Rössli · seit 1984
             </span>
           </span>
         </Link>
@@ -112,7 +112,7 @@ export function SiteHeader() {
       {/* Mobile menu */}
       <div
         className={cn(
-          "lg:hidden fixed inset-x-0 top-18 bottom-0 bg-cream-light/98 backdrop-blur-lg transition-all duration-400 ease-out",
+          "lg:hidden fixed inset-x-0 top-18 bottom-0 bg-paper/98 backdrop-blur-lg transition-[opacity,transform] duration-300 [transition-timing-function:var(--ease-drawer)]",
           open
             ? "opacity-100 translate-y-0 pointer-events-auto"
             : "opacity-0 -translate-y-2 pointer-events-none"
@@ -129,12 +129,15 @@ export function SiteHeader() {
                 <Link
                   key={item.href}
                   href={item.href}
+                  data-open={open}
                   className={cn(
-                    "py-4 font-serif text-3xl tracking-tight border-b border-line transition-colors duration-200",
+                    "py-4 font-serif text-3xl tracking-tight border-b border-line",
+                    "transition-[color,opacity,transform] duration-300 [transition-timing-function:var(--ease-out)]",
+                    "data-[open=false]:opacity-0 data-[open=false]:translate-y-2",
                     active ? "text-brand-red" : "text-ink hover:text-brand-red"
                   )}
                   style={{
-                    transitionDelay: open ? `${i * 40 + 80}ms` : "0ms",
+                    transitionDelay: open ? `${80 + i * 50}ms` : "0ms",
                   }}
                 >
                   {item.label}

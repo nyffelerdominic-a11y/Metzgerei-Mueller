@@ -16,7 +16,7 @@ export const partyserviceMenu: MenuSection[] = [
   {
     id: "znueni-zmittag-znacht",
     title: "Z'Nüni, Z'Mittag oder Z'Nacht",
-    subtitle: "Herzhafte Klassiker für jede Tageszeit",
+    subtitle: "Klassiker für die Pause oder zwischendurch",
     note: "Preis pro Person · ab 6 Personen",
     items: [
       {
@@ -74,7 +74,7 @@ export const partyserviceMenu: MenuSection[] = [
   {
     id: "feste",
     title: "Geburts-, Jubiläums- oder Festtafel",
-    subtitle: "Für besondere Anlässe — wahlweise vegetarisch erweiterbar",
+    subtitle: "Für Anlässe mit warmem Essen, vegetarische Varianten möglich",
     note: "Preis pro Person · ab 6 Personen",
     items: [
       {
@@ -174,20 +174,20 @@ export const partyserviceMenu: MenuSection[] = [
 
 export const partyserviceValues = [
   {
-    title: "Für jeden Anlass",
-    body: "Ob Geburtstag, Firmenfeier oder Familienfest — wir machen Ihr Event besonders.",
+    title: "10 bis 200 Personen",
+    body: "Vom Familiengeburtstag bis zum Firmenanlass. Die Erfahrung haben wir.",
   },
   {
-    title: "Mit Liebe zubereitet",
-    body: "Frische Zutaten, traditionelle Rezepte und höchste Qualität aus unserer Metzgerei.",
+    title: "Aus eigener Küche",
+    body: "Wurst aus unserer Wursterei, Fleisch von Bauern aus der Region.",
   },
   {
-    title: "Kompletter Service",
-    body: "Von der Beratung bis zur Lieferung — wir kümmern uns um alles.",
+    title: "Liefern oder abholen",
+    body: "Wir bringen es vorbei oder Sie holen es ab. Beides geht.",
   },
   {
-    title: "Regional & persönlich",
-    body: "Persönlicher Service, regionale Produkte und echte Leidenschaft.",
+    title: "Eine Ansprechperson",
+    body: "Marco koordiniert, plant und liefert. Sie haben einen Kontakt für alles.",
   },
 ];
 
@@ -196,36 +196,36 @@ export const sortimentCategories = [
     slug: "charcuterie",
     title: "Charcuterie",
     blurb:
-      "Trockenfleisch, Salsiz, Rohwürste — sorgfältig gereift und in Handarbeit aufgeschnitten.",
+      "Trockenfleisch, Salsiz, Rohwürste. Bei uns gereift, an der Theke aufgeschnitten.",
   },
   {
     slug: "wurstwaren",
     title: "Wurstwaren",
     blurb:
-      "Aus eigener Wursterei — Bratwurst, Cervelat, Schüblig, Lyoner und saisonale Spezialitäten.",
+      "Bratwurst, Cervelat, Schüblig, Lyoner. Aus der Wursterei nebenan, plus Saisonales.",
   },
   {
     slug: "grilladen",
     title: "Grilladen",
     blurb:
-      "Mariniertes Fleisch, Spiesse, Steaks — vom Schweizer Bauern auf Ihren Rost.",
+      "Mariniertes Fleisch, Spiesse, Steaks. Vom Bauern direkt auf den Rost.",
   },
   {
     slug: "fleischstuecke",
     title: "Saftige Fleischstücke",
     blurb:
-      "Rind, Kalb, Schwein, Lamm — von regionalen Höfen, fachgerecht zerlegt und gereift.",
+      "Rind, Kalb, Schwein, Lamm. Von Höfen aus der Region, im Haus zerlegt und gereift.",
   },
   {
     slug: "saisonal",
     title: "Saisonale Spezialitäten",
     blurb:
-      "Bärlauchwürste im Frühling, Wildgerichte im Herbst, Festtagsbraten und Chinoiseplatten.",
+      "Bärlauchwurst im Frühling, Wild im Herbst, Chinoise- und Festtagsplatten zur Saison.",
   },
   {
     slug: "znueni",
     title: "Z'Nüni",
     blurb:
-      "Sandwiches, Wurstwaren-Snacks, hausgemachte Pasteten — frisch für die Pause.",
+      "Sandwiches, Wurstwaren-Snacks, hausgemachte Pasteten. Etwas Schnelles für unterwegs.",
   },
 ];

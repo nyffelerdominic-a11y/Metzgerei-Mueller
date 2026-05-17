@@ -3,7 +3,7 @@ export const site = {
   fullName: "Müller Metzgerei AG zum Rössli",
   slogan: "Genuss, der verbindet.",
   description:
-    "Seit über 40 Jahren Metzgerei-Handwerk in Brüttisellen. Hauseigene Wursterei, regionale Lieferanten, Partyservice für jeden Anlass.",
+    "Seit 1984 Metzgerei in Brüttisellen. Eigene Wursterei, Fleisch von Höfen aus der Region, Partyservice für 10 bis 200 Personen.",
   url: "https://www.mueller-metzgerei-zum-roessli.ch",
   phone: "044 833 25 05",
   phoneTel: "+41448332505",
@@ -24,9 +24,9 @@ export const site = {
 
 export const navigation = [
   { href: "/", label: "Start" },
-  { href: "/metzgerei", label: "Metzgerei" },
-  { href: "/sortiment", label: "Sortiment" },
+  { href: "/#sortiment", label: "Sortiment" },
   { href: "/partyservice", label: "Partyservice" },
-  { href: "/team", label: "Team" },
+  { href: "/ueber-uns", label: "Über uns" },
+  { href: "/blog", label: "Blog" },
   { href: "/kontakt", label: "Kontakt" },
 ] as const;

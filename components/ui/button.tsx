@@ -4,14 +4,16 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const button = cva(
-  "inline-flex items-center justify-center gap-2 font-medium tracking-tight transition-all duration-200 ease-out disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98]",
+  "inline-flex items-center justify-center gap-2 font-medium tracking-tight transition-[transform,background-color,color,box-shadow,border-color] duration-200 [transition-timing-function:var(--ease-out)] disabled:opacity-50 disabled:pointer-events-none active:scale-[0.97] active:duration-100",
   {
     variants: {
       variant: {
         primary:
-          "bg-brand-red text-cream-light hover:bg-brand-red-dark shadow-[0_1px_0_0_rgba(154,22,32,0.4)_inset,0_8px_24px_-12px_rgba(200,32,43,0.6)] hover:shadow-[0_1px_0_0_rgba(154,22,32,0.4)_inset,0_12px_32px_-12px_rgba(200,32,43,0.8)]",
+          "bg-brand-red text-paper hover:bg-brand-red-dark shadow-[0_1px_0_0_rgba(154,22,32,0.4)_inset,0_8px_24px_-12px_rgba(200,32,43,0.6)] hover:shadow-[0_1px_0_0_rgba(154,22,32,0.4)_inset,0_12px_32px_-12px_rgba(200,32,43,0.8)]",
+        "on-dark":
+          "bg-paper text-ink hover:bg-brass hover:text-ink",
         navy:
-          "bg-brand-navy text-cream-light hover:bg-brand-navy-dark",
+          "bg-brand-navy text-paper hover:bg-brand-navy-dark",
         outline:
           "border border-ink/15 text-ink hover:bg-ink/5 hover:border-ink/30",
         ghost: "text-ink hover:bg-ink/5",

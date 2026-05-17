@@ -19,18 +19,27 @@ export function Stamp({
   centerLine2?: string;
   className?: string;
   size?: number;
-  tone?: "red" | "ink" | "cream";
+  tone?: "red" | "ink" | "cream" | "brass";
 }) {
   const color =
     tone === "cream"
-      ? "var(--color-cream-light)"
+      ? "var(--color-paper)"
       : tone === "ink"
         ? "var(--color-ink)"
-        : "var(--color-brand-red)";
+        : tone === "brass"
+          ? "var(--color-brass)"
+          : "var(--color-brand-red)";
 
   // Unique ids so multiple stamps can coexist
   const idTop = `stamp-top-${topText.length}-${size}`;
   const idBottom = `stamp-bot-${bottomText.length}-${size}`;
+
+  const bgFill =
+    tone === "cream"
+      ? "var(--color-ink)"
+      : tone === "brass"
+        ? "var(--color-ink)"
+        : "var(--color-paper)";
 
   return (
     <svg
@@ -38,12 +47,16 @@ export function Stamp({
       width={size}
       height={size}
       className={cn("select-none", className)}
+      style={{ filter: "drop-shadow(0 6px 14px rgba(0,0,0,0.18))" }}
       aria-hidden
     >
       <defs>
         <path id={idTop} d="M 30,100 A 70,70 0 0 1 170,100" fill="none" />
         <path id={idBottom} d="M 35,108 A 65,65 0 0 0 165,108" fill="none" />
       </defs>
+
+      {/* Solid background disc — makes stamp readable on any photo */}
+      <circle cx="100" cy="100" r="94" fill={bgFill} />
 
       {/* Outer ring */}
       <circle
@@ -52,7 +65,7 @@ export function Stamp({
         r="92"
         fill="none"
         stroke={color}
-        strokeWidth="2"
+        strokeWidth="3"
       />
       {/* Inner thin ring */}
       <circle
@@ -61,7 +74,7 @@ export function Stamp({
         r="84"
         fill="none"
         stroke={color}
-        strokeWidth="0.75"
+        strokeWidth="1.25"
       />
 
       {/* Top arc text */}
@@ -146,7 +159,7 @@ export function Stamp({
       </text>
 
       {/* Decorative side dashes */}
-      <g stroke={color} strokeWidth="2" strokeLinecap="round">
+      <g stroke={color} strokeWidth="2.5" strokeLinecap="round">
         <line x1="22" y1="100" x2="32" y2="100" />
         <line x1="168" y1="100" x2="178" y2="100" />
       </g>

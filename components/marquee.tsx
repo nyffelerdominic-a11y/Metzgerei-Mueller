@@ -17,7 +17,7 @@ export function Marquee({
   return (
     <div className={cn("relative overflow-hidden", className)}>
       <div
-        className="flex whitespace-nowrap will-change-transform"
+        className="marquee-track flex whitespace-nowrap will-change-transform"
         style={{
           animation: `marquee ${speed}s linear infinite`,
         }}

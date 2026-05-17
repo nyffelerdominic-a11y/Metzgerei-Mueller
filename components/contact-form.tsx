@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Check, Send } from "lucide-react";
+import { Check, Send, AlertCircle, Loader2 } from "lucide-react";
 import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
 
@@ -59,12 +59,12 @@ export function ContactForm({
 
   if (sent) {
     return (
-      <div className="rounded-2xl border border-line bg-cream-light p-10 text-center">
-        <div className="mx-auto inline-flex size-14 items-center justify-center rounded-full bg-brand-red text-cream-light">
-          <Check className="size-6" />
+      <div className="rounded-2xl border border-line bg-cream-light p-10 text-center animate-in fade-in duration-300" role="status" aria-live="polite">
+        <div className="mx-auto inline-flex size-14 items-center justify-center rounded-full bg-brand-red text-cream-light animate-in zoom-in duration-300" style={{ animationDelay: "100ms" }}>
+          <Check className="size-6 animate-in scale-in duration-300" style={{ animationDelay: "200ms" }} />
         </div>
-        <h3 className="mt-6 font-serif text-2xl tracking-tight">Vielen Dank!</h3>
-        <p className="mt-2 text-ink-soft text-pretty max-w-md mx-auto">
+        <h3 className="mt-6 font-serif text-2xl tracking-tight animate-in slide-in-from-bottom-2 duration-300" style={{ animationDelay: "300ms" }}>Vielen Dank!</h3>
+        <p className="mt-2 text-ink-soft text-pretty max-w-md mx-auto animate-in slide-in-from-bottom-2 duration-300" style={{ animationDelay: "400ms" }}>
           Wir haben Ihre Anfrage erhalten und melden uns innerhalb eines
           Werktags zurück.
         </p>
@@ -159,18 +159,36 @@ export function ContactForm({
       </Field>
 
       {error && (
-        <p className="rounded-lg bg-brand-red/10 px-4 py-3 text-sm text-brand-red-dark">
-          {error}
-        </p>
+        <div className="rounded-lg bg-brand-red/10 px-4 py-3 text-sm text-brand-red-dark flex items-start gap-3 border border-brand-red/20" role="alert">
+          <AlertCircle className="size-5 mt-0.5 shrink-0" />
+          <div>
+            <p className="font-medium">Fehler beim Senden</p>
+            <p className="mt-1 text-xs">{error}</p>
+          </div>
+        </div>
       )}
 
       <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:justify-between pt-2">
         <p className="text-xs text-ink-mute">
           Wir antworten innerhalb eines Werktags.
         </p>
-        <Button type="submit" disabled={isSubmitting} size="lg">
-          {isSubmitting ? "Wird gesendet ..." : "Anfrage senden"}
-          <Send className="size-4" />
+        <Button
+          type="submit"
+          disabled={isSubmitting}
+          size="lg"
+          aria-busy={isSubmitting}
+        >
+          {isSubmitting ? (
+            <>
+              <Loader2 className="size-4 animate-spin" />
+              Wird gesendet ...
+            </>
+          ) : (
+            <>
+              Anfrage senden
+              <Send className="size-4" />
+            </>
+          )}
         </Button>
       </div>
     </form>
@@ -190,12 +208,12 @@ function Field({
 }) {
   return (
     <label className="block">
-      <span className="block font-mono text-[11px] uppercase tracking-[0.15em] text-ink-soft mb-2">
+      <span className="block font-mono text-[11px] uppercase tracking-[0.15em] text-ink mb-2 font-medium">
         {label}
-        {required && <span className="text-brand-red ml-1">*</span>}
+        {required && <span className="text-brand-red ml-1" aria-label="erforderlich">*</span>}
       </span>
       {children}
-      {error && <span className="mt-1 block text-xs text-brand-red-dark">{error}</span>}
+      {error && <span className="mt-1 block text-xs text-brand-red-dark font-medium" role="alert">{error}</span>}
     </label>
   );
 }

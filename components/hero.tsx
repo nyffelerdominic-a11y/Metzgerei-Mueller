@@ -9,8 +9,8 @@ import { Marquee } from "./marquee";
 import { OpeningStatusBadge } from "./opening-status";
 import { site } from "@/lib/site";
 
-const HERO_IMG =
-  "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=1800&q=80&auto=format&fit=crop";
+const HERO_BG = "/photos/theke-uebersicht.jpg";
+const HERO_CARD = "/photos/hero-card.png";
 
 const TICKER_ITEMS = [
   "Heute frisch",
@@ -29,118 +29,129 @@ export function Hero() {
   const reduce = useReducedMotion();
 
   return (
-    <section className="relative bg-cream-paper text-ink overflow-hidden">
-      {/* Decorative background numerals */}
-      <div
-        aria-hidden
-        className="absolute -top-8 -right-12 sm:-right-20 select-none pointer-events-none font-display-tall text-[28vw] sm:text-[18vw] lg:text-[14vw] leading-[0.85] text-brand-red/[0.05] tracking-tighter"
-      >
-        1984
-      </div>
+    <section className="relative isolate overflow-hidden bg-brand-red-deep text-paper">
+      {/* Full-bleed atmospheric background — counter shot from the shop, heavily
+          desaturated and darkened so it reads as ambient backdrop, not as a
+          documentary photo of vacuum-packed product. */}
+      <Image
+        src={HERO_BG}
+        alt=""
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover object-center [filter:saturate(0.4)_contrast(1.2)_brightness(0.65)]"
+      />
 
-      <div className="relative mx-auto max-w-7xl px-6 sm:px-8 lg:px-12 pt-28 sm:pt-32 lg:pt-36 pb-12">
-        <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
+      {/* Heavy dark wash + directional gradient for legibility */}
+      <div className="absolute inset-0 bg-ink/70" />
+      <div className="absolute inset-0 bg-gradient-to-r from-ink/95 via-ink/65 to-ink/35" />
+      <div className="absolute inset-0 bg-gradient-to-b from-ink/40 via-transparent to-brand-red-deep/55" />
+      {/* Bottom red wash → marquee */}
+      <div className="absolute inset-x-0 bottom-0 h-[30%] bg-gradient-to-t from-brand-red-deep via-brand-red-deep/80 to-transparent" />
+
+      <div className="relative mx-auto max-w-7xl px-6 sm:px-8 lg:px-12 pt-28 sm:pt-32 lg:pt-36 pb-24 sm:pb-32">
+        <div className="grid gap-12 lg:grid-cols-12 lg:items-end">
           {/* Type column */}
           <motion.div
-            initial={reduce ? false : { opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={reduce ? false : { opacity: 0, transform: "translateY(20px)" }}
+            animate={{ opacity: 1, transform: "translateY(0px)" }}
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-8 relative z-10"
+            className="lg:col-span-7"
           >
-            {/* Eyebrow */}
-            <div className="flex items-center gap-4 text-ink-soft">
-              <div className="rule-double-red w-16" />
-              <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-brand-red">
-                No. 01 · Brüttisellen
+            <div className="flex items-center gap-4">
+              <span className="h-px w-12 bg-brass" />
+              <span className="font-mono text-[11px] uppercase tracking-[0.3em] text-brass">
+                No. 01 · Brüttisellen · seit 1984
               </span>
             </div>
 
-            {/* Mega-headline */}
-            <h1 className="mt-6 sm:mt-8 leading-[0.85] text-balance">
-              <span className="block font-display-tall text-[20vw] sm:text-[16vw] lg:text-[13rem] xl:text-[15rem] uppercase text-ink">
-                Müller
-              </span>
-              <span className="mt-3 sm:mt-4 flex flex-wrap items-baseline gap-x-4 gap-y-1 font-mono text-[11px] sm:text-sm uppercase tracking-[0.3em] text-brand-red">
-                <span className="inline-block h-px w-8 bg-brand-red translate-y-[-4px]" />
-                <span>Metzgerei AG</span>
-                <span className="text-ink-mute">·</span>
-                <span className="text-ink-soft">zum Rössli</span>
-              </span>
-              <span className="mt-8 sm:mt-10 block font-serif italic font-light text-[12vw] sm:text-[9vw] lg:text-[7.5rem] leading-[0.95] text-brand-red">
+            <h1 className="mt-7 sm:mt-9 leading-[0.92] text-balance">
+              <span className="block font-display text-[clamp(3rem,8vw,7.5rem)] font-medium tracking-tight text-paper">
                 Handwerk,
               </span>
-              <span className="mt-1 block font-serif italic font-light text-[12vw] sm:text-[9vw] lg:text-[7.5rem] leading-[0.95] text-ink">
+              <span className="block italic-display text-[clamp(3rem,8vw,7.5rem)] text-brass mt-1">
                 das man schmeckt.
               </span>
             </h1>
 
-            {/* Sub + CTA */}
-            <div className="mt-10 grid gap-8 sm:grid-cols-12 sm:items-end">
-              <p className="sm:col-span-7 max-w-md text-[15px] sm:text-base leading-relaxed text-ink-soft text-pretty">
-                Vier Jahrzehnte Schweizer Metzgerei-Handwerk. Hauseigene
-                Wursterei, regionale Bauern, frisch jeden Tag. Wir freuen uns
-                auf Ihren Besuch.
-              </p>
-              <div className="sm:col-span-5 flex flex-wrap items-center gap-3">
-                <Link
-                  href="/partyservice"
-                  className="group inline-flex items-center gap-3 bg-ink text-cream-light hover:bg-brand-red transition-colors duration-300 px-6 h-12 rounded-full font-medium"
-                >
-                  Partyservice
-                  <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" />
-                </Link>
-                <a
-                  href={`tel:${site.phoneTel}`}
-                  className="inline-flex items-center gap-2 text-ink hover:text-brand-red transition-colors text-sm font-medium"
-                >
-                  <Phone className="size-4" />
-                  {site.phone}
-                </a>
-              </div>
+            <p className="mt-8 max-w-xl text-lg sm:text-xl leading-relaxed text-paper/85 text-pretty">
+              Familienbetrieb in zweiter Generation. Hauseigene Wursterei,
+              Fleisch von Höfen aus der Region, sechs Tage die Woche frisch
+              in der Theke.
+            </p>
+
+            <div className="mt-10 flex flex-wrap items-center gap-4">
+              <Link
+                href="/partyservice"
+                className="group inline-flex items-center gap-3 bg-paper text-ink [@media(hover:hover)]:hover:bg-brass px-7 h-12 rounded-full font-medium transition-[background-color,transform] duration-200 [transition-timing-function:var(--ease-out)] active:scale-[0.97] active:duration-100"
+              >
+                Partyservice entdecken
+                <ArrowRight className="size-4 transition-transform duration-200 [transition-timing-function:var(--ease-out)] [@media(hover:hover)]:group-hover:translate-x-0.5" />
+              </Link>
+              <a
+                href={`tel:${site.phoneTel}`}
+                className="inline-flex items-center gap-2 text-paper [@media(hover:hover)]:hover:text-brass transition-colors duration-150 text-sm font-medium"
+              >
+                <Phone className="size-4" />
+                {site.phone}
+              </a>
             </div>
           </motion.div>
 
-          {/* Image + Stamp column */}
+          {/* Photo card with stamp in the corner */}
           <motion.aside
-            initial={reduce ? false : { opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.0, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-4 relative"
+            initial={reduce ? false : { opacity: 0, transform: "translateY(30px) scale(0.97)" }}
+            animate={{ opacity: 1, transform: "translateY(0px) scale(1)" }}
+            transition={{
+              duration: 1.0,
+              delay: 0.25,
+              ease: [0.16, 1, 0.3, 1],
+            }}
+            className="lg:col-span-5 relative"
           >
-            <div className="relative aspect-[3/4] overflow-hidden rounded-sm bg-ink">
-              <Image
-                src={HERO_IMG}
-                alt="Hochwertige Wurstwaren und Charcuterie aus der Müller Metzgerei"
-                fill
-                priority
-                sizes="(min-width: 1024px) 33vw, 100vw"
-                className="object-cover [filter:saturate(0.9)_contrast(1.1)]"
-              />
-              {/* Subtle inner border */}
-              <div className="absolute inset-3 border border-cream-light/20 pointer-events-none" />
+            <div className="relative">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-sm bg-ink shadow-[0_30px_60px_-20px_rgba(0,0,0,0.6),0_15px_30px_-15px_rgba(0,0,0,0.4)]">
+                <Image
+                  src={HERO_CARD}
+                  alt="Bündnerfleisch und Trockenwurst aus eigener Produktion"
+                  fill
+                  priority
+                  sizes="(min-width: 1024px) 40vw, 100vw"
+                  className="object-cover [filter:saturate(0.95)_contrast(1.05)]"
+                />
+                {/* Inner hairline frame */}
+                <div className="absolute inset-3 border border-paper/20 pointer-events-none" />
+
+                {/* Caption strip — bottom right of the card */}
+                <div className="absolute bottom-4 right-4 z-10 inline-flex items-center gap-2 bg-paper/95 backdrop-blur-sm px-3 py-1.5 rounded-full text-[10px] uppercase tracking-[0.22em] font-mono text-ink">
+                  Fig. 01 — Charcuterie
+                </div>
+              </div>
+
+              {/* Stamp — straddles the top-left edge: half on image, half on hero bg.
+                  Dark stamp fill + brass text keeps it readable on both sides. */}
+              <div
+                className="absolute -top-8 -left-10 sm:-left-14 lg:-left-16 z-20"
+                style={{
+                  animation: reduce
+                    ? undefined
+                    : "stamp-pulse 6s var(--ease-out-quart) infinite",
+                }}
+              >
+                <Stamp size={150} tone="brass" />
+              </div>
             </div>
 
-            {/* Rotated stamp overlapping image */}
-            <div
-              className="absolute -bottom-8 -left-8 sm:-left-12 lg:bottom-auto lg:top-[-2rem] lg:-left-16 z-10"
-              style={{
-                animation: reduce ? undefined : "stamp-pulse 6s var(--ease-out-quart) infinite",
-              }}
-            >
-              <Stamp size={140} tone="red" />
-            </div>
-
-            {/* Caption */}
-            <div className="mt-5 flex items-start justify-between gap-4 text-[11px] uppercase tracking-[0.25em] text-ink-mute font-mono">
-              <span>Fig. 01</span>
-              <OpeningStatusBadge className="!text-[10px] !tracking-[0.2em]" />
+            {/* Caption below card — opening status only */}
+            <div className="mt-5 flex justify-end text-[11px] uppercase tracking-[0.25em] text-paper/65 font-mono">
+              <OpeningStatusBadge className="!text-[10px] !tracking-[0.2em] !text-paper/75" />
             </div>
           </motion.aside>
         </div>
       </div>
 
-      {/* Marquee ticker — full bleed, sits at the bottom of hero */}
-      <div className="relative mt-6 sm:mt-12 border-y-2 border-double border-ink bg-brand-red text-cream-light py-2">
+      {/* Marquee ticker — full bleed at the bottom of hero */}
+      <div className="relative bg-brand-red-deep text-paper py-2.5">
         <Marquee items={TICKER_ITEMS} speed={50} />
       </div>
     </section>

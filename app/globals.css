@@ -1,57 +1,85 @@
 @import "tailwindcss";
 
 @theme {
-  /* Brand colors — refined for print-letterpress feel */
-  --color-brand-red: #b51d24;
-  --color-brand-red-dark: #8a141a;
-  --color-brand-red-ink: #5c0c12;
-  --color-brand-navy: #1a3361;
-  --color-brand-navy-dark: #11244a;
-  --color-cream: #ede3cd;
-  --color-cream-light: #f5ecd5;
-  --color-cream-paper: #faf3df;
-  --color-ink: #15110d;
-  --color-ink-soft: #4a4036;
-  --color-ink-mute: #8b8074;
-  --color-gold: #b4914a;
-  --color-line: #d6c8a8;
-  --color-line-soft: #e3d6b7;
+  /*
+   * Edel & Editorial — warm ivory paper, deep print-red, one serif + one sans.
+   * All neutrals tinted toward the same warm hue (~75°) so the page reads as
+   * one consistent material.
+   */
+
+  /* Brand */
+  --color-brand-red:        oklch(0.49 0.18 25);    /* tiefes Druckrot */
+  --color-brand-red-dark:   oklch(0.38 0.15 25);
+  --color-brand-red-ink:    oklch(0.30 0.10 25);    /* burgundy dark sections */
+  --color-brand-red-deep:   oklch(0.24 0.08 25);    /* footer */
+  --color-brand-red-tint:   oklch(0.93 0.04 28);    /* helle Notiz-Tönung */
+
+  /* Paper — one consistent warm ivory family. Two tones, clearly distinct. */
+  --color-paper:            oklch(0.975 0.012 78);  /* main warm ivory */
+  --color-paper-deep:       oklch(0.940 0.020 78);  /* alternating sections, visibly deeper */
+  --color-paper-soft:       oklch(0.960 0.015 78);  /* a third in-between for layering */
+  --color-cream-light:      oklch(0.975 0.012 78);  /* alias kept for backwards compat */
+  --color-cream:            oklch(0.940 0.020 78);
+  --color-cream-paper:      oklch(0.975 0.012 78);
+
+  --color-line-soft:        oklch(0.90 0.012 78);
+  --color-line:             oklch(0.82 0.014 78);
+  --color-line-strong:      oklch(0.62 0.014 78);
+
+  /* Ink / text — readable on warm ivory */
+  --color-ink:              oklch(0.22 0.014 50);
+  --color-ink-soft:         oklch(0.38 0.014 50);
+  --color-ink-mute:         oklch(0.52 0.012 50);
+
+  /* Accent — patinated brass */
+  --color-brass:            oklch(0.66 0.085 75);
+
+  /* Legacy aliases — secondary surface variant rerouted to burgundy family */
+  --color-brand-navy:       oklch(0.30 0.10 25);
+  --color-brand-navy-dark:  oklch(0.24 0.08 25);
 
   /* Theme aliases */
-  --color-background: var(--color-cream-paper);
+  --color-background: var(--color-paper);
   --color-foreground: var(--color-ink);
 
-  /* Fonts — distinctive, characterful */
-  --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-bricolage), var(--font-geist), ui-sans-serif, sans-serif;
-  --font-serif: var(--font-fraunces), ui-serif, Georgia, serif;
-  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+  /* Type families — two faces only: Newsreader (display + serif) + Geist (sans) */
+  --font-sans:    var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-newsreader), ui-serif, "Iowan Old Style", "Palatino", Georgia, serif;
+  --font-serif:   var(--font-newsreader), ui-serif, "Iowan Old Style", "Palatino", Georgia, serif;
+  --font-mono:    var(--font-jetbrains), ui-monospace, monospace;
 
-  /* Easing */
-  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
-  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-in-out-soft: cubic-bezier(0.65, 0, 0.35, 1);
-  --ease-stamp: cubic-bezier(0.22, 1.4, 0.4, 1);
+  /* Fluid type scale */
+  --text-eyebrow:  clamp(0.75rem, 0.7rem + 0.2vw, 0.875rem);
+  --text-body:     clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  --text-lede:     clamp(1.125rem, 1.05rem + 0.4vw, 1.3125rem);
+  --text-h3:       clamp(1.5rem, 1.25rem + 1.2vw, 2.25rem);
+  --text-h2:       clamp(2rem, 1.5rem + 2.5vw, 3.5rem);
+  --text-h1:       clamp(2.5rem, 1.5rem + 5vw, 5.5rem);
+  --text-display:  clamp(3.5rem, 2rem + 9vw, 10rem);
+
+  /* Easing — stronger custom curves than CSS defaults (Emil Kowalski).
+     Use --ease-out for entrances/UI; --ease-in-out for on-screen motion;
+     --ease-drawer for iOS-feel drawer/sheet animations. */
+  --ease-out:        cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out:     cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer:     cubic-bezier(0.32, 0.72, 0, 1);
+  --ease-out-quart:  cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-out-expo:   cubic-bezier(0.16, 1, 0.3, 1);
 
   /* Animations */
-  --animate-marquee: marquee 40s linear infinite;
-  --animate-stamp-pulse: stamp-pulse 6s var(--ease-out-quart) infinite;
+  --animate-marquee: marquee 50s linear infinite;
 }
 
 @keyframes marquee {
   to { transform: translateX(-50%); }
 }
 
-@keyframes stamp-pulse {
-  0%, 100% { transform: rotate(-8deg) scale(1); }
-  50% { transform: rotate(-8deg) scale(1.02); }
-}
+/* Pause marquee when user hovers — lets them read. */
+.marquee-track:hover { animation-play-state: paused; }
 
 @layer base {
-  *,
-  *::before,
-  *::after {
-    border-color: var(--color-line);
+  *, *::before, *::after {
+    border-color: var(--color-line-soft);
   }
 
   html {
@@ -65,26 +93,28 @@
     background: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
-    font-feature-settings: "ss01", "cv11";
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    font-feature-settings: "ss01", "cv11", "cv05";
     position: relative;
   }
 
-  /* Paper grain on body */
+  /* Very subtle paper grain — keep it quiet so it doesn't fight text */
   body::before {
     content: "";
     position: fixed;
     inset: 0;
     pointer-events: none;
     z-index: 1;
-    opacity: 0.4;
+    opacity: 0.06;
     mix-blend-mode: multiply;
-    background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch' seed='5'/><feColorMatrix values='0 0 0 0 0.08 0 0 0 0 0.07 0 0 0 0 0.05 0 0 0 0.14 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch' seed='5'/><feColorMatrix values='0 0 0 0 0.18 0 0 0 0 0.14 0 0 0 0 0.10 0 0 0 0.10 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
     background-size: 240px 240px;
   }
 
   ::selection {
     background: var(--color-brand-red);
-    color: var(--color-cream-light);
+    color: var(--color-paper);
   }
 
   :focus-visible {
@@ -94,41 +124,50 @@
   }
 
   h1, h2, h3, h4 {
-    font-family: var(--font-serif);
-    letter-spacing: -0.02em;
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
     color: inherit;
-    font-variation-settings: "SOFT" 30, "opsz" 144;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    /* Newsreader: only opsz axis. Higher opsz = display proportions. */
+    font-variation-settings: "opsz" 36;
+  }
+
+  /* Body text max line length — readability hard cap */
+  p {
+    max-width: 68ch;
+  }
+
+  .font-mono, [class*="tabular"] {
+    font-variant-numeric: tabular-nums;
   }
 }
 
 @layer utilities {
   .text-balance { text-wrap: balance; }
-  .text-pretty { text-wrap: pretty; }
+  .text-pretty  { text-wrap: pretty; }
   .font-display { font-family: var(--font-display); }
   .tabular-nums { font-variant-numeric: tabular-nums; }
 
+  /* Editorial poster headlines — Newsreader at large opsz for display proportions */
   .font-display-tall {
     font-family: var(--font-display);
-    font-stretch: 50%;
-    font-weight: 700;
-    letter-spacing: 0.01em;
-    line-height: 0.85;
+    font-weight: 600;
+    font-variation-settings: "opsz" 60;
+    letter-spacing: -0.02em;
+    line-height: 0.92;
   }
 
-  /* Letterpress emboss effect for ornamental headings */
-  .letterpress {
-    text-shadow:
-      0 1px 0 rgba(255,255,255,0.15),
-      0 -1px 0 rgba(0,0,0,0.4);
+  /* True italic for editorial accent words */
+  .italic-display {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 500;
+    font-variation-settings: "opsz" 60;
+    letter-spacing: -0.015em;
   }
 
-  /* Subtle noise texture for warm sections */
-  .bg-noise {
-    background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.1 0 0 0 0 0.09 0 0 0 0 0.08 0 0 0 0.18 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
-    background-size: 180px 180px;
-  }
-
-  /* Dotted leader (for menu items) */
+  /* Dotted leader (printed-menu look) */
   .dotted-leader {
     flex: 1;
     border-bottom: 2px dotted var(--color-line);
@@ -136,16 +175,23 @@
     min-width: 1.5rem;
   }
 
-  /* Ornamental rule */
-  .rule-double {
-    border-top: 1px solid var(--color-ink);
-    border-bottom: 3px solid var(--color-ink);
-    height: 6px;
+  /* Hairline divider used between sections for editorial separation */
+  .rule-editorial {
+    border: 0;
+    border-top: 1px solid var(--color-line);
+    margin: 0;
   }
-  .rule-double-red {
-    border-top: 1px solid var(--color-brand-red);
-    border-bottom: 3px solid var(--color-brand-red);
+
+  .rule-double {
+    border-top: 1px solid currentColor;
+    border-bottom: 3px solid currentColor;
     height: 6px;
+    opacity: 0.85;
+  }
+
+  .panel-note {
+    background: var(--color-brand-red-tint);
+    border: 1px solid color-mix(in oklch, var(--color-brand-red) 30%, transparent);
   }
 }
 
