@@ -60,7 +60,7 @@ export function SiteHeader() {
             <span className="font-display text-[1.05rem] sm:text-[1.35rem] font-medium tracking-tight text-ink leading-none">
               Müller <span className="italic-display text-brand-red">Metzgerei</span>
             </span>
-            <span className="hidden sm:block font-mono text-[10px] uppercase tracking-[0.25em] text-ink-mute mt-1">
+            <span className="block font-mono text-[9px] sm:text-[10px] uppercase tracking-[0.22em] sm:tracking-[0.25em] text-ink-mute mt-1">
               zum Rössli · seit 1984
             </span>
           </span>
