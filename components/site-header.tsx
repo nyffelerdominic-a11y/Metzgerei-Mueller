@@ -45,6 +45,14 @@ export function SiteHeader() {
       <div className="mx-auto flex h-18 max-w-7xl items-center justify-between px-6 sm:px-8 lg:px-12 py-3">
         <Link
           href="/"
+          onClick={(e) => {
+            // If already on the homepage, smoothly scroll back to top instead
+            // of triggering a no-op route change.
+            if (pathname === "/") {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }
+          }}
           className="flex items-center gap-3 group"
           aria-label={site.fullName}
         >
