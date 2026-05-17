@@ -93,10 +93,10 @@ export default function PartyservicePage() {
             {/* Feature card — tall, left */}
             <Reveal className="lg:col-span-7 lg:row-span-3 group relative rounded-2xl border border-line bg-white p-10 lg:p-14 flex flex-col">
               <div className="flex items-start justify-between">
-                <Award className="size-7 text-brand-red" strokeWidth={1.5} />
                 <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink-mute">
                   01
                 </span>
+                <Award className="size-7 text-brand-red" strokeWidth={1.5} />
               </div>
               <h3 className="mt-8 font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.02] text-balance">
                 {partyserviceValues[0].title}
