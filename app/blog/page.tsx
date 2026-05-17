@@ -18,15 +18,15 @@ export default function BlogPage() {
 
   return (
     <>
-      <Section className="pt-32 sm:pt-40 pb-20 bg-cream-light">
+      <Section className="!pt-24 sm:!pt-32 lg:!pt-40 !pb-16 sm:!pb-20 bg-paper">
         <Container>
           <Reveal className="max-w-3xl">
             <SectionLabel>Blog</SectionLabel>
-            <h1 className="mt-6 font-serif text-5xl sm:text-7xl lg:text-[88px] tracking-tight leading-[0.95] text-balance">
+            <h1 className="mt-6 font-serif text-4xl sm:text-6xl lg:text-[88px] tracking-tight leading-[0.95] text-balance">
               Aus der{" "}
               <em className="italic-display text-brand-red">Metzgerei.</em>
             </h1>
-            <p className="mt-8 max-w-xl text-lg text-ink-soft leading-relaxed text-pretty">
+            <p className="mt-6 sm:mt-8 max-w-xl text-base sm:text-lg text-ink-soft leading-relaxed text-pretty">
               Notizen vom Team. Was wir an der Theke gefragt werden, wie wir
               arbeiten, gelegentlich ein Rezept.
             </p>

@@ -110,56 +110,49 @@ export function SiteHeader() {
       </div>
 
       {/* Mobile menu */}
-      <div
-        className={cn(
-          "lg:hidden fixed inset-x-0 top-18 bottom-0 bg-paper/98 backdrop-blur-lg transition-[opacity,transform] duration-300 [transition-timing-function:var(--ease-drawer)]",
-          open
-            ? "opacity-100 translate-y-0 pointer-events-auto"
-            : "opacity-0 -translate-y-2 pointer-events-none"
-        )}
-      >
-        <div className="flex flex-col px-6 pt-8 pb-12 h-full overflow-y-auto">
-          <nav className="flex flex-col gap-1">
-            {navigation.map((item, i) => {
-              const active =
-                item.href === "/"
-                  ? pathname === "/"
-                  : pathname.startsWith(item.href);
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={cn(
-                    "py-4 font-serif text-3xl tracking-tight border-b border-line",
-                    "transition-[color,opacity,transform] duration-300 [transition-timing-function:var(--ease-out)]",
-                    active ? "text-brand-red" : "text-ink hover:text-brand-red"
-                  )}
-                  style={{
-                    opacity: open ? 1 : 0,
-                    transform: open ? "translateY(0)" : "translateY(8px)",
-                    transitionDelay: open ? `${80 + i * 50}ms` : "0ms",
-                  }}
-                >
-                  {item.label}
-                </Link>
-              );
-            })}
-          </nav>
-          <div className="mt-auto pt-10 space-y-3">
-            <OpeningStatusBadge />
-            <a
-              href={`tel:${site.phoneTel}`}
-              className="flex items-center gap-3 text-lg font-medium text-ink"
-            >
-              <Phone className="size-5" />
-              {site.phone}
-            </a>
-            <p className="text-sm text-ink-soft">
-              {site.address.street}, {site.address.postal} {site.address.city}
-            </p>
+      {open && (
+        <div
+          className="lg:hidden fixed inset-x-0 top-[72px] bottom-0 z-50 bg-paper overflow-y-auto"
+          role="dialog"
+          aria-modal="true"
+        >
+          <div className="flex flex-col px-6 pt-6 pb-12 min-h-full">
+            <nav className="flex flex-col">
+              {navigation.map((item) => {
+                const active =
+                  item.href === "/"
+                    ? pathname === "/"
+                    : pathname.startsWith(item.href);
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className={cn(
+                      "py-5 font-serif text-3xl tracking-tight border-b border-line",
+                      active ? "text-brand-red" : "text-ink"
+                    )}
+                  >
+                    {item.label}
+                  </Link>
+                );
+              })}
+            </nav>
+            <div className="mt-10 space-y-4">
+              <OpeningStatusBadge />
+              <a
+                href={`tel:${site.phoneTel}`}
+                className="flex items-center gap-3 text-lg font-medium text-ink"
+              >
+                <Phone className="size-5" />
+                {site.phone}
+              </a>
+              <p className="text-sm text-ink-soft">
+                {site.address.street}, {site.address.postal} {site.address.city}
+              </p>
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </header>
   );
 }

@@ -58,7 +58,7 @@ export default function HomePage() {
       </Section>
 
       {/* SORTIMENT — Theken-Tafel im Druckmenü-Stil */}
-      <Section id="sortiment" className="bg-paper-deep py-24 sm:py-32 border-y border-line-soft">
+      <Section id="sortiment" className="bg-paper-deep !py-16 sm:!py-24 lg:!py-32 border-y border-line-soft">
         <Container size="default">
           <div className="grid gap-12 lg:grid-cols-12 mb-14">
             <div className="lg:col-span-7">
@@ -117,8 +117,8 @@ export default function HomePage() {
                   </li>
                 ))}
               </ul>
-              <div className="mt-12 flex flex-wrap gap-4">
-                <ButtonLink href="/partyservice" variant="on-dark" size="lg">
+              <div className="mt-10 sm:mt-12 flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-4">
+                <ButtonLink href="/partyservice" variant="on-dark" size="lg" className="w-full sm:w-auto">
                   Menü & Anfrage
                   <ArrowRight className="size-4" />
                 </ButtonLink>
@@ -127,7 +127,7 @@ export default function HomePage() {
                   external
                   variant="ghost"
                   size="lg"
-                  className="!text-paper hover:!bg-paper/10"
+                  className="!text-paper border border-paper/30 hover:!bg-paper/10 w-full sm:w-auto sm:border-0"
                 >
                   {site.phone} anrufen
                 </ButtonLink>

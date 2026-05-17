@@ -33,21 +33,21 @@ export default function PartyservicePage() {
         <div className="absolute inset-0 bg-ink/55" />
         <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/60 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-b from-ink/30 via-transparent to-ink" />
-        <Container className="relative py-32 sm:py-40 lg:py-48">
+        <Container className="relative py-24 sm:py-32 lg:py-48">
           <div className="max-w-3xl">
             <SectionLabel>
               <span className="!text-brass">Partyservice</span>
             </SectionLabel>
-            <h1 className="mt-6 font-serif text-5xl sm:text-7xl lg:text-[96px] tracking-tight leading-[0.95] text-balance">
+            <h1 className="mt-6 font-serif text-4xl sm:text-6xl lg:text-[96px] tracking-tight leading-[0.95] text-balance">
               Genuss, der{" "}
               <em className="italic-display text-brass">verbindet.</em>
             </h1>
-            <p className="mt-8 max-w-xl text-lg sm:text-xl text-paper/85 leading-relaxed text-pretty">
+            <p className="mt-6 sm:mt-8 max-w-xl text-base sm:text-xl text-paper/85 leading-relaxed text-pretty">
               Über 25 Gerichte aus eigener Wursterei und Küche. Nach Bedarf
               zusammengestellt, am Festtag frisch geliefert.
             </p>
-            <div className="mt-10 flex flex-wrap gap-4">
-              <ButtonLink href="#anfrage" variant="on-dark" size="lg">
+            <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-4">
+              <ButtonLink href="#anfrage" variant="on-dark" size="lg" className="w-full sm:w-auto">
                 Anfrage starten
               </ButtonLink>
               <ButtonLink
@@ -55,7 +55,7 @@ export default function PartyservicePage() {
                 external
                 variant="ghost"
                 size="lg"
-                className="!text-paper hover:!bg-paper/10"
+                className="!text-paper border border-paper/30 hover:!bg-paper/10 w-full sm:w-auto sm:border-0"
               >
                 <Phone className="size-4" />
                 {site.phone}

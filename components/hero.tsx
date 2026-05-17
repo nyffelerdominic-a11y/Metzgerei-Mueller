@@ -49,7 +49,7 @@ export function Hero() {
       {/* Bottom red wash → marquee */}
       <div className="absolute inset-x-0 bottom-0 h-[30%] bg-gradient-to-t from-brand-red-deep via-brand-red-deep/80 to-transparent" />
 
-      <div className="relative mx-auto max-w-7xl px-6 sm:px-8 lg:px-12 pt-28 sm:pt-32 lg:pt-36 pb-24 sm:pb-32">
+      <div className="relative mx-auto max-w-7xl px-6 sm:px-8 lg:px-12 pt-20 sm:pt-28 lg:pt-36 pb-16 sm:pb-24 lg:pb-32">
         <div className="grid gap-12 lg:grid-cols-12 lg:items-end">
           {/* Type column */}
           <motion.div
@@ -65,32 +65,32 @@ export function Hero() {
               </span>
             </div>
 
-            <h1 className="mt-7 sm:mt-9 leading-[0.92] text-balance">
-              <span className="block font-display text-[clamp(3rem,8vw,7.5rem)] font-medium tracking-tight text-paper">
+            <h1 className="mt-6 sm:mt-9 leading-[0.95] sm:leading-[0.92] text-balance">
+              <span className="block font-display text-[clamp(2.25rem,9vw,7.5rem)] font-medium tracking-tight text-paper">
                 Handwerk,
               </span>
-              <span className="block italic-display text-[clamp(3rem,8vw,7.5rem)] text-brass mt-1">
+              <span className="block italic-display text-[clamp(2.25rem,9vw,7.5rem)] text-brass mt-1">
                 das man schmeckt.
               </span>
             </h1>
 
-            <p className="mt-8 max-w-xl text-lg sm:text-xl leading-relaxed text-paper/85 text-pretty">
+            <p className="mt-6 sm:mt-8 max-w-xl text-base sm:text-xl leading-relaxed text-paper/85 text-pretty">
               Familienbetrieb in zweiter Generation. Hauseigene Wursterei,
               Fleisch von Höfen aus der Region, sechs Tage die Woche frisch
               in der Theke.
             </p>
 
-            <div className="mt-10 flex flex-wrap items-center gap-4">
+            <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-3 sm:gap-4">
               <Link
                 href="/partyservice"
-                className="group inline-flex items-center gap-3 bg-paper text-ink [@media(hover:hover)]:hover:bg-brass px-7 h-12 rounded-full font-medium transition-[background-color,transform] duration-200 [transition-timing-function:var(--ease-out)] active:scale-[0.97] active:duration-100"
+                className="group inline-flex items-center justify-center gap-3 bg-paper text-ink [@media(hover:hover)]:hover:bg-brass px-7 h-12 rounded-full font-medium transition-[background-color,transform] duration-200 [transition-timing-function:var(--ease-out)] active:scale-[0.97] active:duration-100 w-full sm:w-auto"
               >
                 Partyservice entdecken
                 <ArrowRight className="size-4 transition-transform duration-200 [transition-timing-function:var(--ease-out)] [@media(hover:hover)]:group-hover:translate-x-0.5" />
               </Link>
               <a
                 href={`tel:${site.phoneTel}`}
-                className="inline-flex items-center gap-2 text-paper [@media(hover:hover)]:hover:text-brass transition-colors duration-150 text-sm font-medium"
+                className="inline-flex items-center justify-center gap-2 text-paper border border-paper/30 [@media(hover:hover)]:hover:bg-paper/10 transition-colors duration-150 text-sm font-medium h-12 px-6 rounded-full w-full sm:w-auto sm:border-0 sm:h-auto sm:px-0"
               >
                 <Phone className="size-4" />
                 {site.phone}

@@ -30,14 +30,14 @@ export default function KontaktPage() {
         <div className="absolute inset-0 bg-ink/55" />
         <div className="absolute inset-0 bg-gradient-to-r from-ink/85 via-ink/55 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-b from-ink/20 via-transparent to-brand-red-deep/40" />
-        <Container className="relative py-32 sm:py-40 lg:py-48">
+        <Container className="relative py-24 sm:py-32 lg:py-48">
           <Reveal className="max-w-3xl">
             <SectionLabel><span className="!text-brass">Kontakt</span></SectionLabel>
-            <h1 className="mt-6 font-serif text-5xl sm:text-7xl lg:text-[96px] tracking-tight leading-[0.95] text-balance">
+            <h1 className="mt-6 font-serif text-4xl sm:text-6xl lg:text-[96px] tracking-tight leading-[0.95] text-balance">
               Wie wir{" "}
               <em className="italic-display text-brass">erreichbar sind.</em>
             </h1>
-            <p className="mt-8 max-w-xl text-lg sm:text-xl text-paper/85 leading-relaxed text-pretty">
+            <p className="mt-6 sm:mt-8 max-w-xl text-base sm:text-xl text-paper/85 leading-relaxed text-pretty">
               Das Büro ist nicht immer besetzt. Bei dringenden Anfragen am
               besten anrufen oder kurz im Laden vorbeikommen. Nicht so
               dringend? Das Formular reicht.
