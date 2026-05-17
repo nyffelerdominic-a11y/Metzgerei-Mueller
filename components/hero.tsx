@@ -74,20 +74,20 @@ export function Hero() {
           </p>
 
           <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-3 sm:gap-4">
+            <a
+              href={`tel:${site.phoneTel}`}
+              className="group inline-flex items-center justify-center gap-3 bg-paper text-ink [@media(hover:hover)]:hover:bg-brass px-7 h-12 rounded-full font-medium transition-[background-color,transform] duration-200 [transition-timing-function:var(--ease-out)] active:scale-[0.97] active:duration-100 w-full sm:w-auto"
+            >
+              <Phone className="size-4" />
+              {site.phone} anrufen
+            </a>
             <Link
               href="/partyservice"
-              className="group inline-flex items-center justify-center gap-3 bg-paper text-ink [@media(hover:hover)]:hover:bg-brass px-7 h-12 rounded-full font-medium transition-[background-color,transform] duration-200 [transition-timing-function:var(--ease-out)] active:scale-[0.97] active:duration-100 w-full sm:w-auto"
+              className="group inline-flex items-center justify-center gap-2 text-paper border border-paper/30 [@media(hover:hover)]:hover:bg-paper/10 transition-colors duration-150 text-sm font-medium h-12 px-6 rounded-full w-full sm:w-auto"
             >
               Partyservice entdecken
               <ArrowRight className="size-4 transition-transform duration-200 [transition-timing-function:var(--ease-out)] [@media(hover:hover)]:group-hover:translate-x-0.5" />
             </Link>
-            <a
-              href={`tel:${site.phoneTel}`}
-              className="inline-flex items-center justify-center gap-2 text-paper border border-paper/30 [@media(hover:hover)]:hover:bg-paper/10 transition-colors duration-150 text-sm font-medium h-12 px-6 rounded-full w-full sm:w-auto sm:border-0 sm:h-auto sm:px-0"
-            >
-              <Phone className="size-4" />
-              {site.phone}
-            </a>
           </div>
         </motion.div>
 
