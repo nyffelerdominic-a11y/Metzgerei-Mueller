@@ -128,17 +128,17 @@ export function Hero() {
                 </div>
               </div>
 
-              {/* Stamp — straddles the top-left edge: half on image, half on hero bg.
-                  Dark stamp fill + brass text keeps it readable on both sides. */}
+              {/* Stamp — on mobile sits inside the card's top-left;
+                  on lg+ straddles outward across the card edge. */}
               <div
-                className="absolute -top-8 -left-10 sm:-left-14 lg:-left-16 z-20"
+                className="absolute -top-5 left-3 sm:-top-7 sm:left-4 lg:-top-8 lg:-left-16 z-20"
                 style={{
                   animation: reduce
                     ? undefined
                     : "stamp-pulse 6s var(--ease-out-quart) infinite",
                 }}
               >
-                <Stamp size={150} tone="brass" />
+                <Stamp size={130} tone="brass" />
               </div>
             </div>
 

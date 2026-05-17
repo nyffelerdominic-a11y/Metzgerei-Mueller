@@ -55,11 +55,11 @@ export function SiteHeader() {
             className="size-11 rounded-full transition-transform duration-200 [transition-timing-function:var(--ease-out)] [@media(hover:hover)]:group-hover:scale-[1.03]"
             priority
           />
-          <span className="hidden sm:flex flex-col leading-tight">
-            <span className="font-display text-[1.35rem] font-medium tracking-tight text-ink leading-none">
+          <span className="flex flex-col leading-tight">
+            <span className="font-display text-[1.05rem] sm:text-[1.35rem] font-medium tracking-tight text-ink leading-none">
               Müller <span className="italic-display text-brand-red">Metzgerei</span>
             </span>
-            <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-ink-mute mt-1">
+            <span className="hidden sm:block font-mono text-[10px] uppercase tracking-[0.25em] text-ink-mute mt-1">
               zum Rössli · seit 1984
             </span>
           </span>
@@ -129,14 +129,14 @@ export function SiteHeader() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  data-open={open}
                   className={cn(
                     "py-4 font-serif text-3xl tracking-tight border-b border-line",
                     "transition-[color,opacity,transform] duration-300 [transition-timing-function:var(--ease-out)]",
-                    "data-[open=false]:opacity-0 data-[open=false]:translate-y-2",
                     active ? "text-brand-red" : "text-ink hover:text-brand-red"
                   )}
                   style={{
+                    opacity: open ? 1 : 0,
+                    transform: open ? "translateY(0)" : "translateY(8px)",
                     transitionDelay: open ? `${80 + i * 50}ms` : "0ms",
                   }}
                 >
