@@ -19,7 +19,8 @@ export function Marquee({
       <div
         className="marquee-track flex whitespace-nowrap will-change-transform"
         style={{
-          animation: `marquee ${speed}s linear infinite`,
+          ["--marquee-duration" as string]: `${speed}s`,
+          animation: `marquee var(--marquee-duration) linear infinite`,
         }}
       >
         {doubled.map((label, i) => (

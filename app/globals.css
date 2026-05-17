@@ -77,6 +77,14 @@
 /* Pause marquee when user hovers — lets them read. */
 .marquee-track:hover { animation-play-state: paused; }
 
+/* Mobile: shorter cycle so the marquee feels lively, not sluggish.
+   On phones the visible width is small, so the same speed in s feels slower. */
+@media (max-width: 640px) {
+  .marquee-track {
+    animation-duration: calc(var(--marquee-duration) * 0.55) !important;
+  }
+}
+
 @layer base {
   *, *::before, *::after {
     border-color: var(--color-line-soft);
