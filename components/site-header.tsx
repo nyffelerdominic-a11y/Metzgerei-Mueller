@@ -33,6 +33,7 @@ export function SiteHeader() {
   }, [open]);
 
   return (
+    <>
     <header
       className={cn(
         "sticky top-0 z-40 bg-paper/95 backdrop-blur-md transition-shadow duration-300",
@@ -109,50 +110,67 @@ export function SiteHeader() {
         </div>
       </div>
 
-      {/* Mobile menu */}
-      {open && (
-        <div
-          className="lg:hidden fixed inset-x-0 top-[72px] bottom-0 z-50 bg-paper overflow-y-auto"
-          role="dialog"
-          aria-modal="true"
-        >
-          <div className="flex flex-col px-6 pt-6 pb-12 min-h-full">
-            <nav className="flex flex-col">
-              {navigation.map((item) => {
-                const active =
-                  item.href === "/"
-                    ? pathname === "/"
-                    : pathname.startsWith(item.href);
-                return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className={cn(
-                      "py-5 font-serif text-3xl tracking-tight border-b border-line",
-                      active ? "text-brand-red" : "text-ink"
-                    )}
-                  >
-                    {item.label}
-                  </Link>
-                );
-              })}
-            </nav>
-            <div className="mt-10 space-y-4">
-              <OpeningStatusBadge />
-              <a
-                href={`tel:${site.phoneTel}`}
-                className="flex items-center gap-3 text-lg font-medium text-ink"
-              >
-                <Phone className="size-5" />
-                {site.phone}
-              </a>
-              <p className="text-sm text-ink-soft">
-                {site.address.street}, {site.address.postal} {site.address.city}
-              </p>
-            </div>
+    </header>
+
+    {/* Mobile menu — rendered as sibling of header to avoid stacking-context
+        issues with the sticky header's backdrop-filter. */}
+    {open && (
+      <div
+        className="lg:hidden fixed inset-0 z-[60] bg-paper overflow-y-auto"
+        role="dialog"
+        aria-modal="true"
+      >
+        <div className="sticky top-0 flex items-center justify-between bg-paper border-b border-line px-6 py-3 h-[72px]">
+          <span className="font-display text-[1.05rem] font-medium tracking-tight text-ink leading-none">
+            Müller <span className="italic-display text-brand-red">Metzgerei</span>
+          </span>
+          <button
+            type="button"
+            className="inline-flex size-11 items-center justify-center rounded-full border border-ink/10"
+            aria-label="Menü schließen"
+            onClick={() => setOpen(false)}
+          >
+            <X className="size-5" />
+          </button>
+        </div>
+        <div className="flex flex-col px-6 pt-6 pb-12">
+          <nav className="flex flex-col">
+            {navigation.map((item) => {
+              const active =
+                item.href === "/"
+                  ? pathname === "/"
+                  : pathname.startsWith(item.href);
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setOpen(false)}
+                  className={cn(
+                    "py-5 font-serif text-3xl tracking-tight border-b border-line",
+                    active ? "text-brand-red" : "text-ink"
+                  )}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
+          </nav>
+          <div className="mt-10 space-y-4">
+            <OpeningStatusBadge />
+            <a
+              href={`tel:${site.phoneTel}`}
+              className="flex items-center gap-3 text-lg font-medium text-ink"
+            >
+              <Phone className="size-5" />
+              {site.phone}
+            </a>
+            <p className="text-sm text-ink-soft">
+              {site.address.street}, {site.address.postal} {site.address.city}
+            </p>
           </div>
         </div>
-      )}
-    </header>
+      </div>
+    )}
+    </>
   );
 }
